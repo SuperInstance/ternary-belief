@@ -1,0 +1,8 @@
+[package]
+name = "ternary-belief"
+version = "0.1.0"
+edition = "2021"
+description = "Belief propagation on ternary networks with values in {-1, 0, +1}"
+license = "MIT"
+
+[dependencies]
