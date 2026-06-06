@@ -1,43 +1,38 @@
-# PLUG_AND_PLAY — ternary-belief
+# PLUG_AND_PLAY — Belief
 
-> *Integration guide for incorporating ternary-belief into your SuperInstance fleet setup.*
+> Belief propagation on ternary networks {-1, 0, +1}
 
-## Dependency
+## 🚀 Quick Start
+
+Add to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-ternary_belief = "0.1.0"
+ternary-belief = { git = "https://github.com/SuperInstance/ternary-belief" }
 ```
 
-## Feature Flags
-
-| Feature | Default | Description |
-|---------|---------|-------------|
-| `std` | yes | Standard library support |
-| `alloc` | yes | Allocator support (for no_std) |
-
-## Integration Patterns
-
-### Basic Usage
+Use in your code:
 
 ```rust
-use ternary_belief::*;
+use ternary_belief::{BeliefNetwork, TernaryFactorGraph};
+
+let mut net = BeliefNetwork::new();
+net.add_factor(|a, b| (a == b) as i8);
+let beliefs = net.infer();
 ```
 
-### With the Ternary Ecosystem
+## 📚 Available Documentation
 
-This crate works naturally with:
-- [ternary-core](https://github.com/SuperInstance/ternary-core) for Z₃ arithmetic
-- [ternary-types](https://github.com/SuperInstance/ternary-types) for type-level encodings
+| Document | Description |
+|----------|-------------|
+| `docs/FROM_BINARY.md` | Understanding ternary concepts as a binary programmer |
+| `docs/MIGRATION.md` | Version migration guide |
+| `docs/FUTURE-INTEGRATION.md` | Planned features and roadmap |
 
-## Configuration
+## 🔗 Integration
 
-ternary-belief requires minimal configuration. Where configuration is needed:
-- No runtime configuration files needed — pure library
-- Feature gates control optional dependencies
+This crate is part of the [SuperInstance ternary fleet](https://github.com/SuperInstance). It uses the canonical `Ternary` type from `ternary-types` for cross-crate compatibility.
 
-## Compatibility
+## 📄 License
 
-- **Rust edition**: 2021+
-- **Targets**: All tier-1 Rust targets (x86_64, aarch64, ARM Cortex)
-- **no_std**: Not applicable
+MIT
